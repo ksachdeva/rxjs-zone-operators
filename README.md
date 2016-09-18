@@ -16,7 +16,7 @@ Learn about usage of zones in Angular 2 - <http://blog.thoughtram.io/angular/201
 So what is the problem you may ask -
 
 If you are here it means that you have adopted the Reactive Extensions for JavaScript in your 
-project that uses Angular 2 and are puzzled that some times change detection is not happening.
+Angular 2 project and are puzzled that some times change detection is not happening.
 
 Let me give you a real example where there is a problem -
 
@@ -27,9 +27,9 @@ Let me give you a real example where there is a problem -
 - ionic-native not only provides the binding but it also does smart wrapping of apis exposed by cordova plugins
 - Essentially the callback functions of plugin apis are either wrapped into Promises or Observables
 
-The problem is that when the callbacks are fired by the cordova plugin it does not execute in the Angular 2 excution context (i.e. zone).
+The problem is that when the callbacks are fired by the cordova plugin they does not execute in the Angular 2 excution context (i.e. zone).
 
-Most of the time you would not notice the problem (but it is there !!) because your user may interact with the user interface and by doing may get back into the angular zone. You would notice the problem if you expect to see changes in the user interface as a result of callback fired by the cordova plugin.
+Most of the time you would not notice the problem (but it is there !!) because your user may interact with the user interface and by doing may get back into the angular zone.
 
 Here is how you would solve this for apis that return Promise (when ionic-native wraps the callback into Promise)
 
@@ -42,10 +42,9 @@ mycordovaAPI().then(() => {
 })
 ```
 
-Now lot of cordova plugin apis are wrapped into Observables. The ones that are to be fired multiple times should be wrapped
-as Observables.
+Now lot of cordova plugin apis are wrapped into Observables as well. The ones that are to be fired multiple times should be wrapped as Observables.
 
-and here comes the challenge because if we do something similar to what we have done with our Promise example then we would end up breaking the operator chain (or as some one proficient in reactive extensions would say ... you are now leaving the monad !)
+and here comes the challenge - if we do something similar to what we have done with our Promise example then we would end up breaking the operator chain (or as some one proficient in reactive extensions would say ... you are now leaving the monad !)
 
 This is where enterZone shines as all you need to do is following 
 
