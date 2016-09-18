@@ -1,5 +1,5 @@
 {
-    "name": "ng2-rxjs-zone-operators",
+    "name": "rxjs-zone-operators",
     "version": "0.1.0",
     "description": "Reactive extensions for Zones",
     "main": "dist/index.js",
