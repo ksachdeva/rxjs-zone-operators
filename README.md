@@ -3,6 +3,10 @@
 Note - The code for enterZone & leaveZone operators has been copied from 
 [https://github.com/ngrx/core](@ngrx/core) project
 
+```bash
+npm install rxjs-zone-operators --save
+```
+
 ## Reactive extensions for Zones
 
 Learn what are zones - <https://github.com/angular/zone.js>
